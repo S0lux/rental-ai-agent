@@ -1,0 +1,51 @@
+{
+  "servers": {
+    "postgres-mcp": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "DATABASE_URI",
+        "crystaldba/postgres-mcp",
+        "--access-mode=unrestricted"
+      ],
+      "env": {
+        "DATABASE_URI": "postgresql://${input:db_user}:${input:db_password}@${input:db_host}:${input:db_port}/${input:db_name}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "db_user",
+      "description": "Username for the database connection",
+      "password": false
+    },
+    {
+      "type": "promptString",
+      "id": "db_password",
+      "description": "Password for the database connection",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "db_host",
+      "description": "Host for the database connection",
+      "password": false
+    },
+    {
+      "type": "promptString",
+      "id": "db_port",
+      "description": "Port for the database connection",
+      "password": false
+    },
+    {
+      "type": "promptString",
+      "id": "db_name",
+      "description": "Name for the database connection",
+      "password": false
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+ag2[openai]
+python-dotenv
+psycopg[binary]
+loguru
